@@ -8,14 +8,31 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CardView: View {
+    var title = "Berapa Ukuran Sepatu Tony?"
+    var background = Color.black
     var body: some View {
-        Text("Hello, guys!")
+        VStack {
+            Text(title)
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .padding(.vertical, 12.0)
+            Text("3")
+                .padding(.vertical, 12)
+                .font(.system(size: 56))
+                .foregroundColor(.white)
+        }
+        .frame(width: 300)
+        .cornerRadius(10)
+        .background(background)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CardView()
     }
 }
