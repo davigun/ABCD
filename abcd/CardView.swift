@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct CardView: View {
-    var title = "Berapa ukuran sepatu Toni?"
+    var title = "Berapa ukuran sepatu David?"
     var background = Color.black
-    @State var timeRemaining = 10
+    @State var timeRemaining = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -23,18 +23,23 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .padding(.vertical, 12.0)
-            Text("\(timeRemaining)")
+            Text("\(timeRemaining > 0 ? "\(timeRemaining)" : "")")
                 .onReceive(timer) { _ in
-                    if self.timeRemaining > 0 {
-                        self.timeRemaining -= 1
-                    }
+                    self.countDown(self.timeRemaining)
                 }
+                .frame(width: 100)
                 .padding(.vertical, 12)
                 .font(.system(size: 56))
                 .foregroundColor(.white)
         }
         .frame(width: 300, height: 150)
         .background(background)
+    }
+    
+    func countDown(_ timeRemaining: Int) {
+        if timeRemaining > 0 {
+            self.timeRemaining -= 1
+        }
     }
 }
 

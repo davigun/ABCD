@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct MainView: View {
-    var title = "Berapa ukuran sepatu Toni?"
+    var title = "Berapa ukuran sepatu David?"
     var background = Color.black
-    var counter = 10
+    var counter = 5
     
     var body: some View {
         VStack(alignment: .center) {
-            Spacer()
+            ActionView()
+            .rotationEffect(.degrees(-180))
             CardView(title: title, background: background, timeRemaining: counter)
                 .rotationEffect(.degrees(-180))
                 .cornerRadius(10)
@@ -24,7 +25,7 @@ struct MainView: View {
             Spacer()
             CardView(title: title, background: background, timeRemaining: counter)
                 .cornerRadius(10)
-            Spacer()
+            ActionView()
         }
         .frame(width: 300, height: 700, alignment: .center)
         .padding(.vertical, 12.0)
@@ -34,5 +35,30 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+    }
+}
+
+struct ActionButton: View {
+    var buttonLabel = ""
+    var body: some View {
+        Button(action: {
+            
+        }) {
+            Text(buttonLabel)
+                .font(.system(size: 20))
+        }
+        .frame(width: 60, height: 60)
+        .padding(.top, 24)
+    }
+}
+
+struct ActionView: View {
+    var body: some View {
+        HStack {
+            ActionButton(buttonLabel: "Salah")
+            Spacer()
+            ActionButton(buttonLabel: "Benar")
+        }
+        .frame(width: 200)
     }
 }
