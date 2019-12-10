@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CardView.swift
 //  abcd
 //
 //  Created by David Gunawan on 09/12/19.
@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CardView: View {
-    var title = "Berapa Ukuran Sepatu Tony?"
+    var title = "Berapa ukuran sepatu Toni?"
     var background = Color.black
     var body: some View {
         VStack {
@@ -25,8 +25,7 @@ struct CardView: View {
                 .font(.system(size: 56))
                 .foregroundColor(.white)
         }
-        .frame(width: 300)
-        .cornerRadius(10)
+        .frame(width: 300, height: 150)
         .background(background)
     }
 }
