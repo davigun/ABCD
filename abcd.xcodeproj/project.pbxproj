@@ -103,8 +103,8 @@
 			children = (
 				46B0BD7B239E5C070069B305 /* AppDelegate.swift */,
 				46B0BD7D239E5C070069B305 /* SceneDelegate.swift */,
-				46C72452239F694F00FDA666 /* CardView.swift */,
 				46C72454239F698400FDA666 /* MainView.swift */,
+				46C72452239F694F00FDA666 /* CardView.swift */,
 				46B0BD81239E5C0B0069B305 /* Assets.xcassets */,
 				46B0BD86239E5C0B0069B305 /* LaunchScreen.storyboard */,
 				46B0BD89239E5C0B0069B305 /* Info.plist */,

@@ -9,16 +9,20 @@
 import SwiftUI
 
 struct MainView: View {
+    var title = "Berapa ukuran sepatu Toni?"
+    var background = Color.black
+    var counter = 10
+    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
-            CardView()
+            CardView(title: title, background: background, timeRemaining: counter)
                 .rotationEffect(.degrees(-180))
                 .cornerRadius(10)
             Spacer()
             Divider()
             Spacer()
-            CardView()
+            CardView(title: title, background: background, timeRemaining: counter)
                 .cornerRadius(10)
             Spacer()
         }
