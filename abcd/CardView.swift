@@ -24,7 +24,7 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .padding(.vertical, 12.0)
-            Text("\(timeRemaining > 0 ? "\(timeRemaining)" : "")")
+            Text("\(timeRemaining > 0 ? "\(timeRemaining)" : " ")")
                 .onReceive(timer) { _ in
                     self.countDown(self.timeRemaining)
                 }
