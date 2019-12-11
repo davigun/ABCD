@@ -13,15 +13,11 @@ struct MainView: View {
     var background = Color.black
     var counter = 5
     @State private var answerTime = false
-    
+    @State private var isShown = false
     var body: some View {
         VStack(alignment: .center) {
-            if self.answerTime {
-                ActionView()
-                .rotationEffect(.degrees(-180))
-            } else {
-                Spacer()
-            }
+            ActionView(isActionShown: $answerTime)
+            .rotationEffect(.degrees(-180))
             CardView(title: title, background: background, timeRemaining: counter, isFinished: $answerTime)
                 .rotationEffect(.degrees(-180))
                 .cornerRadius(10)
@@ -30,11 +26,7 @@ struct MainView: View {
             Spacer()
             CardView(title: title, background: background, timeRemaining: counter, isFinished: $answerTime)
                 .cornerRadius(10)
-            if self.answerTime {
-                ActionView()
-            } else {
-                Spacer()
-            }
+            ActionView(isActionShown: $answerTime)
         }
         .frame(width: 300, height: 700, alignment: .center)
         .padding(.vertical, 12.0)
@@ -44,6 +36,18 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+    }
+}
+
+struct ActionView: View {
+    @Binding var isActionShown: Bool
+    var body: some View {
+        HStack {
+            ActionButton(buttonLabel: isActionShown ? "Salah" : "")
+            Spacer()
+            ActionButton(buttonLabel: isActionShown ? "Benar" : "")
+        }
+        .frame(width: 200)
     }
 }
 
@@ -58,16 +62,5 @@ struct ActionButton: View {
         }
         .frame(width: 60, height: 60)
         .padding(.top, 24)
-    }
-}
-
-struct ActionView: View {
-    var body: some View {
-        HStack {
-            ActionButton(buttonLabel: "Salah")
-            Spacer()
-            ActionButton(buttonLabel: "Benar")
-        }
-        .frame(width: 200)
     }
 }
