@@ -12,6 +12,7 @@ struct CardView: View {
     var title = "Berapa ukuran sepatu David?"
     var background = Color.black
     @State var timeRemaining = 0
+    @Binding var isFinished: Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -39,12 +40,14 @@ struct CardView: View {
     func countDown(_ timeRemaining: Int) {
         if timeRemaining > 0 {
             self.timeRemaining -= 1
+        } else {
+            self.isFinished = true
         }
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView()
-    }
-}
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardView()
+//    }
+//}

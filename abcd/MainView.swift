@@ -12,20 +12,29 @@ struct MainView: View {
     var title = "Berapa ukuran sepatu David?"
     var background = Color.black
     var counter = 5
+    @State private var answerTime = false
     
     var body: some View {
         VStack(alignment: .center) {
-            ActionView()
-            .rotationEffect(.degrees(-180))
-            CardView(title: title, background: background, timeRemaining: counter)
+            if self.answerTime {
+                ActionView()
+                .rotationEffect(.degrees(-180))
+            } else {
+                Spacer()
+            }
+            CardView(title: title, background: background, timeRemaining: counter, isFinished: $answerTime)
                 .rotationEffect(.degrees(-180))
                 .cornerRadius(10)
             Spacer()
             Divider()
             Spacer()
-            CardView(title: title, background: background, timeRemaining: counter)
+            CardView(title: title, background: background, timeRemaining: counter, isFinished: $answerTime)
                 .cornerRadius(10)
-            ActionView()
+            if self.answerTime {
+                ActionView()
+            } else {
+                Spacer()
+            }
         }
         .frame(width: 300, height: 700, alignment: .center)
         .padding(.vertical, 12.0)
